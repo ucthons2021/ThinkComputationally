@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import numpy
+import argparse
 
 def calc_pi_hitmiss(n):
     """Estimate pi using a hit-and-miss Monte-Carlo simulation.
@@ -28,4 +29,13 @@ def calc_pi_hitmiss(n):
 
 # Define a main programme for testing
 if __name__ == '__main__':
-    print(calc_pi_hitmiss(100000))
+
+    # use argparse to get the number of points from the command line
+    parser = argparse.ArgumentParser(
+      description='Calculate pi using a hit-and-miss Monte-Carlo simulation.')
+    parser.add_argument('npoints', type=int, help='number of points to generate')
+
+    args = parser.parse_args()
+
+    # call the function to do the actual work
+    print(calc_pi_hitmiss(args.npoints))
